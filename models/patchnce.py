@@ -35,7 +35,7 @@ class PatchNCELoss(nn.Module):
             batch_dim_for_bmm = self.opt.batch_size
 
         # reshape features to batch size
-        bs_batch_size = batch_dim_for_bmm/max(len(self.opt.gpu_ids), 1)
+        bs_batch_size = batch_dim_for_bmm//max(len(self.opt.gpu_ids), 1)
         feat_q = feat_q.view(bs_batch_size, -1, dim)
         feat_k = feat_k.view(bs_batch_size, -1, dim)
         npatches = feat_q.size(1)
